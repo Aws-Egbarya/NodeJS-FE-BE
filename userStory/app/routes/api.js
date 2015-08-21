@@ -94,10 +94,6 @@ module.exports = function (app, express){
 
 	});
 
-	api.get('/', function(req, res){
-		res.json("Hello World");
-	});
-
 	api.route('/')
 
 				 .post(function(req, res){
