@@ -1,0 +1,19 @@
+{
+  "name": "userStory",
+  "version": "1.0.0",
+  "description": "First User Story",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aws Egbarya",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "jsonwebtoken": "^5.0.4",
+    "mongoose": "^4.1.3",
+    "morgan": "^1.6.1"
+  }
+}
