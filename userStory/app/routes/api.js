@@ -84,10 +84,10 @@ module.exports = function (app, express){
 				if(err){
 					res.status(403).send({success: false, message: "Authentication failed"});
 				}else{
-					req.decode = decoded;
+					req.decoded = decoded;
 					next();
 				}
-			})
+			});
 		}else{
 			res.status(403).send({success: false, message: "No token provided"});
 		}
@@ -96,7 +96,7 @@ module.exports = function (app, express){
 
 	api.route('/')
 
-				 .post(function(req, res){
+				.post(function(req, res){
 				 	var story = new Story({
 				 		ceator: req.decoded.id,
 						content: req.body.content
@@ -109,7 +109,25 @@ module.exports = function (app, express){
 
 				 		res.json({message: "New Story Created!"});
 				 	});
-				 });
+				 })
+
+
+				.get(function(req, res){
+					Story.find({ ceator: req.decoded.id}, function(err, stories){
+
+						if(err){
+							res.send(err);
+							return;
+						}
+						res.json(stories);
+					});
+
+				});
+
+	api.get('/me', function (){
+
+		res.json(req.decoded);
+	});
 
 	return api;
 }
